@@ -1,4 +1,5 @@
-Welcome to Bamazon 
+Welcome to Bamazon!!
+
 The bamazon node portal allows users to purchase items from different departments. The user will first see the list of items on a table. 
 
 Starting screen:
