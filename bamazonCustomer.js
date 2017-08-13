@@ -13,7 +13,7 @@ var connection = mysql.createConnection({
 
   // Your password
   password: "chen8722!",
-  database: "amazon_db"
+  database: "bbamazon_db"
 });
 
  var table = new Table({
@@ -24,12 +24,10 @@ var connection = mysql.createConnection({
               head:   ['product_ID', 'Prodcut_Name', 'Price', 'Quantity']
             });
 
-
-
 // connect to the mysql server and sql database
 connection.connect(function(err) {
   if (err) throw err;
- //function start(){
+
    console.log("List of our products")
    connection.query("SELECT * FROM products", function(err, results) {
             
@@ -52,6 +50,7 @@ connection.connect(function(err) {
            
       }
 
+    
    console.log(table.toString());
 
   // function start (){
@@ -105,22 +104,24 @@ connection.connect(function(err) {
                   function(error) {
                     if (error) throw err;
                     console.log("Bid placed successfully!");
+                    var total= answer.quantity * results[i].price;
+                     console.log("Thank you for purchasing  " +answer.quantity +"  "+ results[i].product_name +"! " +"Your total is:  $" + total);
+
+
                   }
                 );
                 } 
             else {
                     console.log("sorry out of stock")
                   }
+
       
         });  
-  
+
     })
 
   });
-  // start();
-   // };
-    // start();
+
 });
 
 
- 
