@@ -13,14 +13,26 @@ var connection = mysql.createConnection({
 
   // Your password
   password: "chen8722!",
-  database: "bamazon_db"
+  database: "amazon_db"
 });
+
+ var table = new Table({
+              chars: { 'top': '═' , 'top-mid': '╤' , 'top-left': '╔' , 'top-right': '╗'
+                     , 'bottom': '═' , 'bottom-mid': '╧' , 'bottom-left': '╚' , 'bottom-right': '╝'
+                     , 'left': '║' , 'left-mid': '╟' , 'mid': '─' , 'mid-mid': '┼'
+                     , 'right': '║' , 'right-mid': '╢' , 'middle': '│' }, 
+              head:   ['product_ID', 'Prodcut_Name', 'Price', 'Quantity']
+            });
+
+
+
 // connect to the mysql server and sql database
 connection.connect(function(err) {
   if (err) throw err;
-
+ //function start(){
    console.log("List of our products")
    connection.query("SELECT * FROM products", function(err, results) {
+            
 
       if (err) throw err;
       for (var i = 0; i < results.length; i++) {
@@ -30,22 +42,17 @@ connection.connect(function(err) {
 
      // console.log(results[i].id+ " "+ results[i].product_name + ": $" +results[i].price +"  quantity: " +results[i].stock_quantity )
 
-             var table = new Table({
-              chars: { 'top': '═' , 'top-mid': '╤' , 'top-left': '╔' , 'top-right': '╗'
-                     , 'bottom': '═' , 'bottom-mid': '╧' , 'bottom-left': '╚' , 'bottom-right': '╝'
-                     , 'left': '║' , 'left-mid': '╟' , 'mid': '─' , 'mid-mid': '┼'
-                     , 'right': '║' , 'right-mid': '╢' , 'middle': '│' }
-            });
+            
              
             table.push(
-                ['product_ID', 'Prodcut_Name', 'Price', 'Quantity']
-              , [results[i].id, results[i].product_name , results[i].price, results[i].stock_quantity]
+          
+              [results[i].id, results[i].product_name , results[i].price, results[i].stock_quantity]
             );
              
-              console.log(table.toString());
+           
       }
 
-
+   console.log(table.toString());
 
   // function start (){
   connection.query("SELECT * FROM products", function(err, results) {
@@ -110,10 +117,10 @@ connection.connect(function(err) {
     })
 
   });
+  // start();
+   // };
+    // start();
 });
 
-
-
-  
 
  

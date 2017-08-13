@@ -1,10 +1,10 @@
 -- Drops the animals_db if it exists currently --
-DROP DATABASE IF EXISTS bamazon_db;
+DROP DATABASE IF EXISTS amazon_db;
 -- Creates the "animals_db" database --
-CREATE DATABASE bamazon_db;
+CREATE DATABASE amazon_db;
 
 -- Makes it so all of the following code will affect animals_db --
-USE bamazon_db;
+USE amazon_db;
 
 -- Creates the table "people" within animals_db --
 CREATE TABLE products(
@@ -30,5 +30,5 @@ VALUES ( "electronics", "speaker", 150, 2);
 INSERT INTO products ( department_name, product_name, price, stock_quantity)
 VALUES ( "electronics", "phone charger", 25, 4);
 
-USE bamazon_db;
+USE amazon_db;
 SELECT * FROM products;
